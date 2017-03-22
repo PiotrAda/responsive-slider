@@ -44,6 +44,7 @@ function slideButton (n){
 
 $(".buttons").click(function(){
     var div = $("div");
+    div.finish();
     div.animate({opacity: '0.5'}, "slow");
     div.animate({opacity: '1'}, "slow");
 });
