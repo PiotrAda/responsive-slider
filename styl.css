@@ -1,0 +1,117 @@
+#slider{
+  position: relative;
+  margin: 0 auto;
+  width: 980px;
+}
+
+#slider img{
+  margin: 0 auto;
+  display: block;
+  width: 800px;
+  height: 480px;
+  padding: 20px;
+}
+
+.active{
+  display: block;
+  position: relative;
+}
+
+.hidden{
+  display: none;
+  position: relative;
+}
+
+@keyframes fadeinleft {
+    from {
+    opacity: 0;
+    -webkit-filter: blur(2px);
+    transform: translateX(20%);
+    }
+    to {opacity: 1;
+    -webkit-filter: blur(0px);
+    transform: translateX(0%);
+    }
+}
+
+@keyframes fadeinright {
+    from {
+    opacity: 0;
+    -webkit-filter: blur(2px);
+    transform: translateX(-20%);
+    }
+    to {opacity: 1;
+    -webkit-filter: blur(0px);
+    transform: translateX(0%);
+    }
+}
+
+@keyframes fadein {
+    from {
+    opacity: 0;
+    -webkit-filter: blur(2px);
+    }
+    to {opacity: 1;
+    -webkit-filter: blur(0px);
+    }
+}
+
+#start{
+animation-name: 	fadein;
+animation-duration: 1s;
+overflow: hidden;
+}
+
+#left{
+  animation-name: 	fadeinleft;
+  animation-duration: 1s;
+  overflow: hidden;
+}
+
+#right{
+  animation-name: 	fadeinright;
+  animation-duration: 1s;
+  overflow: hidden;
+}
+
+.leftbutton{
+  position: absolute;
+  margin: -300px 0px 0px 90px;
+  cursor: pointer;
+  padding: 16px;
+  color: #fff;
+  font-size: 30px;
+  background: #7F7F7F;
+}
+
+.leftbutton:hover{
+background:			#C0C0C0;
+}
+
+.rightbutton{
+  position: absolute;
+  margin: -300px 0px 0px 843px;
+  cursor: pointer;
+  padding: 16px;
+  color: #fff;
+  font-size: 30px;
+  background: #7F7F7F;
+  z-index: 1;
+}
+
+.rightbutton:hover{
+background:			#C0C0C0;
+}
+
+.description{
+  position: absolute;
+  left: 90px;
+  bottom: 20px;
+  padding: 0.01em 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #7F7F7F;
+  z-index: 1;
+}
