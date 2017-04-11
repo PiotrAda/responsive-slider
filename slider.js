@@ -1,50 +1,101 @@
-function slideButton (n){
+$(document).ready(function(){
 
-  var i;
-  var j;
-  var picturesArray = document.getElementsByClassName("pictures");
-  var picturesArrayLastIndex = picturesArray.length-1;
+  // zmienna definiuje ilość slajdów;
+  var slidesArray = $('.slide');
+  var slidesCount = $('.slide').length;
+  var slidesAlt = slidesArray.map(function(){
+    return this.alt;
+  }).get();
 
-  for (i = 0; i < picturesArray.length; i++) {
-    if (picturesArray[i].classList.contains("active")){
-      var activeSlide = i;
+  function init(){
+    for (i=0; i < slidesCount; i++) {
+      $('<div class="bottom-buttons"></div>').appendTo('#bottom-buttons-section');
     }
+  };
+  
+  init();
+  var bottomButtons = $('.bottom-buttons');
+  $(bottomButtons[0]).addClass('white-background');
+
+  // set initial description;
+  $('#description').text(slidesAlt[0]);
+  // kreator;
+  var Slider = function(options){
+    this.currentSlideIndex = options.slideIndex;
+    this.slidesCount = options.slidesCount;
+    this.slidePosition = options.slidePosition;
+    this.slideDescription = options.slideDescription;
   }
 
-  for (j = 0; j < picturesArray.length; j++) {
-    if (activeSlide === j && activeSlide > 0 && n === -1) {
-      picturesArray[j].className = picturesArray[j].className.replace("active", "hidden");
-      picturesArray[j].id = ''
-      picturesArray[j+n].className = picturesArray[j+n].className.replace("hidden", "active");
-      picturesArray[j+n].id = 'left'
+  // metoda - przycisk w prawo;
+  Slider.prototype.goToNextSlide = function() {
+    if (this.currentSlideIndex === slidesCount-1) {
+      this.currentSlideIndex = 0;
     }
-
-    else if (activeSlide === j && activeSlide === 0 && n === -1) {
-      picturesArray[j].className = picturesArray[j].className.replace("active", "hidden");
-      picturesArray[j].id = ''
-      picturesArray[picturesArrayLastIndex].className = picturesArray[picturesArrayLastIndex].className.replace("hidden", "active");
-      picturesArray[picturesArrayLastIndex].id = 'left'
+    else {
+      this.currentSlideIndex++;
     }
-
-    else if (activeSlide === j && activeSlide < picturesArrayLastIndex && n === 1) {
-      picturesArray[j].className = picturesArray[j].className.replace("active", "hidden");
-      picturesArray[j].id = ''
-      picturesArray[j+n].className = picturesArray[j+n].className.replace("hidden", "active");
-      picturesArray[j+n].id = 'right'
-    }
-
-    else if (activeSlide === j && activeSlide === picturesArrayLastIndex && n === 1) {
-      picturesArray[j].className = picturesArray[j].className.replace("active", "hidden");
-      picturesArray[j].id = ''
-      picturesArray[0].className = picturesArray[0].className.replace("hidden", "active");
-      picturesArray[0].id = 'right'
-    }
+    this.slidePosition = (this.currentSlideIndex)*-800 + 'px';
+    this.slideDescription = slidesAlt[this.currentSlideIndex];
   }
-}
 
-$(".buttons").click(function(){
-    var div = $("div");
-    div.finish();
-    div.animate({opacity: '0.5'}, "slow");
-    div.animate({opacity: '1'}, "slow");
+  // metoda - przycisk w lewo;
+  Slider.prototype.goToPrevSlide = function() {
+    if (this.currentSlideIndex === 0) {
+      this.currentSlideIndex = slidesCount-1;
+    }
+    else {
+      this.currentSlideIndex--;
+    }
+    this.slidePosition = (this.currentSlideIndex)*-800 + 'px';
+    this.slideDescription = slidesAlt[this.currentSlideIndex];
+  }
+
+  Slider.prototype.goToSpecificSlide = function(argument) {
+    this.currentSlideIndex = argument;
+    this.slidePosition = (this.currentSlideIndex)*-800 + 'px';
+    this.slideDescription = slidesAlt[this.currentSlideIndex];
+  }
+
+  // tworzymy slider;
+  var slider = new Slider({
+    slideIndex: 0,
+    slidesCount: slidesCount,
+    slidePosition: '0px',
+    slideDescription: slidesAlt[0],
+  });
+
+  $('.next-button').on('click', function(){
+    var left = slider.slidePosition;
+    slider.goToNextSlide();
+    $('#container').finish();
+    $('#container').animate({left:slider.slidePosition}, 'slow');
+    $('#description').text(slider.slideDescription);
+    addWhiteBackground(slider.currentSlideIndex);
+  });
+
+  $('.prev-button').on('click', function(){
+    var left = slider.slidePosition;
+    slider.goToPrevSlide();
+    $('#container').finish();
+    $('#container').animate({left:slider.slidePosition}, 'slow');
+    $('#description').text(slider.slideDescription);
+    addWhiteBackground(slider.currentSlideIndex);
+  });
+
+  $('.bottom-buttons').on('click', function(){
+    var left = slider.slidePosition;
+    var click = $(this).index();
+    slider.goToSpecificSlide(click);
+    $('#container').finish();
+    $('#container').animate({left:slider.slidePosition}, 'slow');
+    $('#description').text(slider.slideDescription);
+    addWhiteBackground(slider.currentSlideIndex);
+  });
+
+function addWhiteBackground(x){
+  $(bottomButtons).removeClass('white-background');
+  $(bottomButtons[x]).addClass('white-background');
+};
+
 });

@@ -2,20 +2,27 @@
 <html lang="pl">
 
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="styl.css" type="text/css" />
-	<script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <body>
 
 	<div id="slider">
-		<div id="start" class="active pictures"><img src="picture1.jpg"><div class="description">description of 1'st picture</div></img></div>
-		<div class="hidden pictures"><img src="picture2.jpg"><div class="description">description of 2'nd picture</div></img></div>
-		<div class="hidden pictures"><img src="picture3.jpg"><div class="description">description of 3'rd picture</div></img></div>
-		<div class="leftbutton buttons" onclick="slideButton(-1)" >&#10094;</div>
-		<div class="rightbutton buttons" onclick="slideButton(1)" >&#10095;</div>
+		<div id="container">
+			<img class="slide" alt="Meble do salonu" src="picture1.jpg" />
+			<img class="slide" alt="Meble biurowe" src="picture2.jpg" />
+			<img class="slide" alt="Meble młodzieżowe" src="picture3.jpg" />
+			<img class="slide" alt="Meble kuchenne" src="picture4.jpg" />
+			<img class="slide" alt="Jadalnie" src="picture5.jpg" />
+		</div>
+		<div id="holder"><div id="description"></div></div>
+		<div class="prev-button buttons">&#10094;</div>
+		<div class="next-button buttons">&#10095;</div>
+		<div id="bottom-buttons-section"></div>
 	</div>
 
+	<script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="slider.js"></script>
 
 </body>

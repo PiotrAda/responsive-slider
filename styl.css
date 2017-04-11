@@ -1,117 +1,78 @@
-#slider{
-  position: relative;
-  margin: 0 auto;
-  width: 980px;
-}
+* {
+  box-sizing: border-box; }
+  * #slider {
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+    height: 480px;
+    overflow: hidden; }
+    * #slider #container {
+      position: absolute;
+      left: -0px;
+      width: 4000px;
+      height: 480px; }
+      * #slider #container img {
+        display: block;
+        width: 800px;
+        height: 480px;
+        float: left; }
+    * #slider .buttons {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      bottom: 50%;
+      color: #fff;
+      font-size: 40px;
+      background: #7F7F7F;
+      z-index: 1;
+      width: 50px;
+      height: 60px;
+      margin: -30px 0 0 0;
+      text-align: center;
+      line-height: 60px; }
+    * #slider .prev-button {
+      left: 0px; }
+    * #slider .next-button {
+      left: 750px; }
+    * #slider .prev-button:hover, * #slider .next-button:hover {
+      background: #C0C0C0; }
+    * #slider #holder {
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      bottom: 30px; }
+      * #slider #holder #description {
+        font-size: 18px;
+        line-height: 40px;
+        padding: 0 40px;
+        border-left: 3px solid #7f0000;
+        text-align: center;
+        color: #fff;
+        background-color: #7F7F7F; }
+    * #slider #bottom-buttons-section {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center; }
+    * #slider .bottom-buttons {
+      background-color: #000;
+      display: inline-block;
+      border-radius: 50%;
+      height: 15px;
+      width: 15px;
+      margin: 0 3px;
+      background-color: transparent;
+      border: 1px solid #fff; }
+    * #slider .bottom-buttons:hover {
+      background-color: #fff; }
 
-#slider img{
-  margin: 0 auto;
-  display: block;
-  width: 800px;
-  height: 480px;
-  padding: 20px;
-}
+.white-background {
+  background: #fff !important; }
 
-.active{
-  display: block;
-  position: relative;
-}
+.active {
+  display: block; }
 
-.hidden{
-  display: none;
-  position: relative;
-}
+.hidden {
+  display: none; }
 
-@keyframes fadeinleft {
-    from {
-    opacity: 0;
-    -webkit-filter: blur(2px);
-    transform: translateX(20%);
-    }
-    to {opacity: 1;
-    -webkit-filter: blur(0px);
-    transform: translateX(0%);
-    }
-}
-
-@keyframes fadeinright {
-    from {
-    opacity: 0;
-    -webkit-filter: blur(2px);
-    transform: translateX(-20%);
-    }
-    to {opacity: 1;
-    -webkit-filter: blur(0px);
-    transform: translateX(0%);
-    }
-}
-
-@keyframes fadein {
-    from {
-    opacity: 0;
-    -webkit-filter: blur(2px);
-    }
-    to {opacity: 1;
-    -webkit-filter: blur(0px);
-    }
-}
-
-#start{
-animation-name: 	fadein;
-animation-duration: 1s;
-overflow: hidden;
-}
-
-#left{
-  animation-name: 	fadeinleft;
-  animation-duration: 1s;
-  overflow: hidden;
-}
-
-#right{
-  animation-name: 	fadeinright;
-  animation-duration: 1s;
-  overflow: hidden;
-}
-
-.leftbutton{
-  position: absolute;
-  margin: -300px 0px 0px 90px;
-  cursor: pointer;
-  padding: 16px;
-  color: #fff;
-  font-size: 30px;
-  background: #7F7F7F;
-}
-
-.leftbutton:hover{
-background:			#C0C0C0;
-}
-
-.rightbutton{
-  position: absolute;
-  margin: -300px 0px 0px 843px;
-  cursor: pointer;
-  padding: 16px;
-  color: #fff;
-  font-size: 30px;
-  background: #7F7F7F;
-  z-index: 1;
-}
-
-.rightbutton:hover{
-background:			#C0C0C0;
-}
-
-.description{
-  position: absolute;
-  left: 90px;
-  bottom: 20px;
-  padding: 0.01em 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  font-size: 18px;
-  color: #fff;
-  background-color: #7F7F7F;
-  z-index: 1;
-}
+/*# sourceMappingURL=styl.css.map */
